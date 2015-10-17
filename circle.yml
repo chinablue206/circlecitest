@@ -6,7 +6,7 @@ machine:
 
 general:
   artifacts:
-    - "android/build/outputs/apk/android-debug.apk"
+    - "build/outputs/apk/app-debug.apk"
 
 dependencies:
   pre:
