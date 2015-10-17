@@ -6,7 +6,7 @@ machine:
 
 general:
   artifacts:
-    - "build/outputs/apk/app-debug.apk"
+    - "app/build/outputs/apk/app-debug.apk"
 
 dependencies:
   pre:
@@ -17,3 +17,4 @@ test:
   post:
     - ./gradlew checkstyle
     - cp -r build/reports/* $CIRCLE_TEST_REPORTS
+    - cp -r app/build/reports/* $CIRCLE_TEST_REPORTS
