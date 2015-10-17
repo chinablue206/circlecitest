@@ -1,0 +1,39 @@
+apply plugin: 'com.android.application'
+apply plugin: 'checkstyle'
+checkstyle.toolVersion = '6.11'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        applicationId "com.example.rsk.circlecitest"
+        minSdkVersion 23
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+task checkstyle(type: Checkstyle) {
+    configFile file("${project.rootDir}/config/checkstyle/google_checks.xml")
+    source 'src'
+    include '**/*.java'
+    reports {
+        xml {
+            destination "${project.rootDir}/build/reports/checkstyle.xml"
+        }
+    }
+    classpath = files()
+}
+
+check.dependsOn 'checkstyle'

@@ -1,0 +1,17 @@
+machine:
+  timezone:
+    Asia/Tokyo
+  java:
+    version: openjdk7
+
+general:
+  artifacts:
+    - "android/build/outputs/apk/android-debug.apk"
+
+dependencies:
+  pre:
+
+test:
+  post:
+    - ./gradlew checkstyle
+    - cp -r build/reports/* $CIRCLE_TEST_REPORTS
