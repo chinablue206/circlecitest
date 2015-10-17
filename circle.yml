@@ -10,7 +10,7 @@ general:
 
 dependencies:
   pre:
-    - chmod -x ./gradlew
+    - chmod +x ./gradlew
 
 
 test:
