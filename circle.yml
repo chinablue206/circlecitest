@@ -15,5 +15,9 @@ dependencies:
 test:
   post:
     - ./gradlew checkstyle
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+    - find . -type f -regex ".*/test-results/*/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+    - mkdir -p $CIRCLE_TEST_REPORTS/checkstyle/
+    - find . -type f -regex ".*/checkstyle.xml" -exec cp {} $CIRCLE_TEST_REPORTS/checkstyle/ \;
     - cp -r build/reports/* $CIRCLE_TEST_REPORTS
     - cp -r app/build/reports/* $CIRCLE_TEST_REPORTS
