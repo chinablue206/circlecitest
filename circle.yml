@@ -10,10 +10,11 @@ general:
 
 dependencies:
   pre:
-    - chmod +x ./gradlew
     - echo y | android update sdk --no-ui --all --filter android-23 
 
 test:
+  pre:
+    - chmod +x ./gradlew
   post:
     - ./gradlew checkstyle
     - cp -r build/reports/* $CIRCLE_TEST_REPORTS
