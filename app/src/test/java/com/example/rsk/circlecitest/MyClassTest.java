@@ -8,6 +8,6 @@ public class MyClassTest {
 
     @Test
     public void testHoge() throws Exception {
-        assertTrue(false);
+        assertTrue(true);
     }
 }
